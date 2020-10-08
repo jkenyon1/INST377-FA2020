@@ -1,0 +1,38 @@
+body, .container{
+    background-color: blanchedalmond;
+    width: 90%;
+}
+.flex-outer li, .flex-inner{
+    display: flex;
+    flex-wrap: wrap;
+    align-items:flex-start;
+    margin: 1%;
+}
+.flex-inner{
+    padding: 0 8px;
+    justify-content: space-between;
+}
+.flex-outer li label, .flex-outer li p{
+    flex: 1 0 120px;
+    max-width: 20%;
+    padding-top: 1%;
+    font-weight: 300;
+    font-size: 150%;
+}
+.flex-outer li label + *, .flex-inner{
+    flex: 1 0 120px;
+    margin-right: 20%;
+}
+.flex-outer li input{
+    margin-top: 1%;
+    padding: 10px;
+}
+.flex-outer li textarea{
+    padding: 0 10% 10% 0;
+}
+.flex-outer li button{
+    margin-left: 45%;
+    padding: 8px 16px;
+    background-color:blue;
+    color: white;              
+}
