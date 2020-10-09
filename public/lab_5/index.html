@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <title> Jackson Kenyon Lab 4</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Turret+Road:wght@400;800&display=swap" rel="stylesheet">    
+    </head>
+    <body>
+        <div class="container">
+            <h1>Jackson Kenyon's Lab 4</h1>
+            <form action="/api" method="post">
+                <ul class="flex-outer">
+                    <li>
+                        <label for="fname">First Name</label>
+                        <input name="undefined" type="text" id="fname" maxlength="140">
+                    </li>
+                    <li>
+                        <label for="lname">Last Name</label>
+                        <input name="undefined" type="text" id="lname" maxlength="140">
+                    </li>
+                    <li>
+                        <label for="email">Email</label>
+                        <input name="undefined" type="email" id="email">
+                    </li>
+                    <li>
+                        <label for="phone">Phone</label>
+                        <input name="undefined" type="tel" id="phone">
+                    </li>
+                    <li>
+                        <label for="message">Message</label>
+                        <textarea name="message" rows="5" cols="33" id="message">Enter message here</textarea>
+                    </li>
+                    <li>
+                        <p>Age</p>
+                        <ul class="flex-inner">
+                            <li>
+                                <input name="undefined" type="checkbox" id="eighteen-to-thirtyfive">
+                                <label for="eighteen-to-thirtyfive">18-35</label>
+                            </li>
+                            <li>
+                                <input name="undefined" type="checkbox" id="thirtysix-to-fifty">
+                                <label for="thirtysix-to-fifty">35-50</label>
+                            </li>
+                            <li>
+                                <input name="undefined" type="checkbox" id="fifty-to-sixtyfive">
+                                <label for="fifty-to-sixtyfive">50-65</label>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button name="undefined" type="submit" id="submit">Submit</button>
+                        <button name="undefined" onclick="testFunction()" type="button" id="activate">Activate</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <script>
+            function testFunction() {
+                const rndcol='rgb(255,255,255)'
+                document.body.style.backgroundColor=rndcol;
+                
+                 fetch('/api')
+                 .then((response) => response.text())
+                 .then((response) => {
+                     const fruit=['apple', 'banana','orange'];
+                     const checks=document.querySelectorAll('.flex-inner label');
+                     console.log(checks.length,checks[0]);
+                     checks.forEach(((check,i)=>{
+                         console.log(check,i);
+                         check.innerText= fruits[i];
+                     }))
+                })
+            }
+        </script>
+    </body>
+</html>
