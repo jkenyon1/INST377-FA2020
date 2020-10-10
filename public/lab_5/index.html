@@ -31,19 +31,19 @@
                         <label for="message">Message</label>
                         <textarea name="message" rows="5" cols="33" id="message">Enter message here</textarea>
                     </li>
-                    <li>
+                    <li class="list">
                         <p>Age</p>
                         <ul class="flex-inner">
                             <li>
-                                <input name="undefined" type="checkbox" id="eighteen-to-thirtyfive">
+                                <input name="checkbox" type="checkbox" id="eighteen-to-thirtyfive">
                                 <label for="eighteen-to-thirtyfive">18-35</label>
                             </li>
                             <li>
-                                <input name="undefined" type="checkbox" id="thirtysix-to-fifty">
+                                <input name="checkbox" type="checkbox" id="thirtysix-to-fifty">
                                 <label for="thirtysix-to-fifty">35-50</label>
                             </li>
                             <li>
-                                <input name="undefined" type="checkbox" id="fifty-to-sixtyfive">
+                                <input name="checkbox" type="checkbox" id="fifty-to-sixtyfive">
                                 <label for="fifty-to-sixtyfive">50-65</label>
                             </li>
                         </ul>
@@ -57,20 +57,23 @@
         </div>
         <script>
             function testFunction() {
-                const rndcol='rgb(255,255,255)'
-                document.body.style.backgroundColor=rndcol;
-                
-                 fetch('/api')
-                 .then((response) => response.text())
-                 .then((response) => {
-                     const fruit=['apple', 'banana','orange'];
-                     const checks=document.querySelectorAll('.flex-inner label');
-                     console.log(checks.length,checks[0]);
-                     checks.forEach(((check,i)=>{
-                         console.log(check,i);
-                         check.innerText= fruits[i];
-                     }))
-                })
+                const nameHeader= document.querySelector('.container h1');
+                const labelName=document.querySelector('.list p');
+                const checkBox=document.querySelectorAll('.flex-inner label');
+                const fruitArray=['apple','banana','orange'];
+                const center=document.querySelector('.flex-outer');
+                fetch('/api')
+                .then((response) => response.text())
+                .then((response) => {
+                    nameHeader.innerHTML=response;
+                    document.body.style.backgroundColor='rgb(255,255,255)';
+                    labelName.innerText='Fruits';
+                    checkBox.forEach((el, i) => {
+                        el.innerText=fruitArray[i];
+                    });
+                    center.style.margin="0px Auto";
+                    
+                 })
             }
         </script>
     </body>
