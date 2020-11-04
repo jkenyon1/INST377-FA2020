@@ -30,6 +30,15 @@ document.body.addEventListener('submit', async (e) => {
     .then((fromServer) => fromServer.json())
     .then((fromServer) => {
       // You're going to do your lab work in here. Replace this comment.
+      //use the range() to map the random numbers of the array
+      //use the map() to add it to another array
+      newdiv=document.createElement("ol class='flex-inner'");
+      $('.form').append(newdiv);
+      const countryArray=[];
+      for(i=0;i<10;i++){
+        countryArray[i]=countries[Math.random()*countries.range()];
+      }
+      
       console.log('fromServer', fromServer);
     })
     .catch((err) => console.log(err));

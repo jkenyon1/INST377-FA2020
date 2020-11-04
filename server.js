@@ -3,6 +3,7 @@
 /* eslint-disable no-unused-vars */
 import express from 'express';
 import dotenv from 'dotenv';
+import fetch from 'node-fetch';
 
 dotenv.config();
 
@@ -20,14 +21,16 @@ app.use((req, res, next) => {
 });
 
 app.route('/api')
-  .get((req, res) => {
+  .get(async (req, res) => {
     console.log('GET request detected');
-    res.send(`Lab 5 for ${process.env.NAME}`);
   })
-  .post((req, res) => {
+  .post(async(req, res) => {
     console.log('POST request detected');
-    console.log('Form data in res.body', req.body);
-    res.send('Hello World');
+    const data=await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
+    const json=await data.json();
+    console.log('fetch request', json);
+    res.json(json);
+    
   });
 
 app.listen(port, () => {
